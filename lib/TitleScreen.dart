@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
-import 'SecondScreen.dart';
-class MainScreen extends StatelessWidget{
+import 'HomeScreen.dart';
+class TitleScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context){
-
     return Scaffold(
-
-      appBar: AppBar(
-
-
-        leading: IconButton(icon: Icon(Icons.menu), onPressed: (){
-
-        }),
-
-        title: Text("MainScreen"),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.menu), onPressed: ()
-          {
-          }),
-        ],
-      ),
       body: Container(
         child: Center(
-          child: RaisedButton(
+          child: ElevatedButton(
             onPressed: () {
               Navigator.push(context,
                 MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -34,7 +18,7 @@ class MainScreen extends StatelessWidget{
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black26,
                     spreadRadius: 1,
@@ -49,7 +33,7 @@ class MainScreen extends StatelessWidget{
                   ),
                 ],
               ),
-              child: Center(
+              child: const Center(
                 child: Text(
                   "Button",
                   style: TextStyle(color: Colors.black,
@@ -59,35 +43,9 @@ class MainScreen extends StatelessWidget{
                   ),
                 ),
               ),
-
             ),
           ),
-
         ),
-
     );
   }
 }
-
-
-/*
-*
-*           child: RaisedButton(
-            child: Text('Tap',
-            style: TextStyle(
-
-                color: Colors.blue,
-
-
-              ),
-            ),
-            color: new Color(0xff622f74),
-            onPressed: (){
-                Navigator.push(context,
-
-                MaterialPageRoute(builder: (context)=>HomeScreen()),
-                );
-             },
-
-          ),
-* */
