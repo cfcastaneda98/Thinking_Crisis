@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thinking_crisis/QuickPlay.dart';
+import 'package:thinking_crisis/Model/QuickPlay.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
