@@ -38,7 +38,8 @@ class TitleScreen extends StatelessWidget{
                   "Button",
                   style: TextStyle(color: Colors.black,
                   fontWeight: FontWeight.bold,
-                    fontSize: 18
+                    fontSize: 44,
+                    fontFamily: 'Freestyle Script'
                     ),
                   ),
                 ),
