@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
+import 'package:thinking_crisis/View/AboutScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -87,25 +88,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: InkWell(
                   onTap: (){},
                   splashColor: Colors.black,
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AboutScreen()),
+                      );
+                    },
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-
                       children: <Widget>[
                         Icon(Icons.account_circle,size: 70.0,),
                         Text('About',style: new TextStyle(fontSize: 17.0))
                       ],
                     ),
                   ),
+                  ),
                 ),
               ),
-
-
-
-
-
-
-
             ],
        ),
      ),
