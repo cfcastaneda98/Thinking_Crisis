@@ -16,6 +16,11 @@ class _QuickPlayState extends State<QuickPlay> {
       appBar: AppBar(
           title: Text(
             "Orientation",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 45,
+                fontFamily: 'Freestyle Script'
+            ),
           ),
       ),
       body: OrientationBuilder(builder:

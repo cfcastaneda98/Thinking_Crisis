@@ -11,15 +11,22 @@ class TitleScreen extends StatelessWidget{
         fontFamily: 'Freestyle Script'
     ),);
     return Scaffold(
+      backgroundColor: Colors.lightBlue[100],
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            Image.asset(
+                'assets/images/thinking_crisis_title.png',
+                height: 500,
+            ),
             SizedBox(
               height: 100,
               width: 150,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  side: const BorderSide(width: 3.0, color: Colors.black),
+                  elevation: 10,
                   backgroundColor: Colors.white,
                   minimumSize: const Size(100.0, 20.0),
                 ),

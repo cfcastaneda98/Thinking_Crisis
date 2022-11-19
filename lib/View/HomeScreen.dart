@@ -14,11 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
-      body: Container(
+      body: Center(
+        child: Container(
         padding: EdgeInsets.all(30.0),
-        
-        
-       child: GridView.count(
+         child: GridView.count(
            crossAxisCount: 2,
             children: <Widget>[
               //Left(1) Icon
@@ -34,10 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-
                       children: <Widget>[
                         Icon(Icons.punch_clock,size: 70.0,),
-                        Text('Quickplay',style: new TextStyle(fontSize: 17.0))
+                        Text('Quickplay',style: new TextStyle(fontSize: 17.0,))
                       ],
                     ),
                   ),
@@ -72,7 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-
                       children: <Widget>[
                         Icon(Icons.apartment,size: 70.0,),
                         Text('18 & over',style: new TextStyle(fontSize: 17.0))
@@ -109,6 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
        ),
      ),
+      ),
     );
   }
 }

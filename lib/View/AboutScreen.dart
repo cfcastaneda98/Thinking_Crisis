@@ -10,6 +10,7 @@ class _AboutScreenState extends State<AboutScreen>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
+      backgroundColor: Colors.lightBlue[100],
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -25,7 +26,7 @@ class _AboutScreenState extends State<AboutScreen>{
             const SizedBox(height: 50),
             const Text(
               'Authors:',
-              style: TextStyle(color: Colors.blue,
+              style: TextStyle(color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
                   fontFamily: 'Freestyle Script'
@@ -51,7 +52,7 @@ class _AboutScreenState extends State<AboutScreen>{
             const SizedBox(height: 10),
             const Text(
               'Tools:',
-              style: TextStyle(color: Colors.blue,
+              style: TextStyle(color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 50,
                   fontFamily: 'Freestyle Script'
@@ -88,6 +89,8 @@ class _AboutScreenState extends State<AboutScreen>{
               width: 220,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  side: const BorderSide(width: 3.0, color: Colors.black),
+                  elevation: 10,
                   backgroundColor: Colors.white,
                   minimumSize: const Size(100.0, 20.0),
                 ),
