@@ -10,6 +10,13 @@ class QuickPlay extends StatefulWidget {
 }
 
 class _QuickPlayState extends State<QuickPlay> {
+  var quickPlayList = {
+    'Horse',
+    ''
+  };
+  var over18List = {
+    'Johnny Sins'
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(

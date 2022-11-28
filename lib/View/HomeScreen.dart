@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/View/AboutScreen.dart';
 
+import 'Over18Screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -35,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Icon(Icons.punch_clock,size: 70.0,),
-                        Text('Quickplay',style: new TextStyle(fontSize: 17.0,))
+                        Text('Quickplay',style: new TextStyle(fontSize: 17.0))
                       ],
                     ),
                   ),
@@ -67,18 +69,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: InkWell(
                   onTap: (){},
                   splashColor: Colors.black,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.apartment,size: 70.0,),
-                        Text('18 & over',style: new TextStyle(fontSize: 17.0))
-                      ],
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Over18Screen()),
+                      );
+                    },
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(Icons.block_flipped,size: 70.0,),
+                          Text('18+ Game',style: new TextStyle(fontSize: 17.0))
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-
               //Right(2) icon
               Card(
                 margin: EdgeInsets.all(8.0),

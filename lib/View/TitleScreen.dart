@@ -47,6 +47,16 @@ class TitleScreen extends StatelessWidget{
                 ),
               ),
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Ver 1.0.0',
+                style: TextStyle(color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+              ),
+            ),
+            ),
            ],
           ),
         ),
