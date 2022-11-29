@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../View/HomeScreen.dart';
+
 class QuickPlay extends StatefulWidget {
 
 
@@ -15,55 +17,115 @@ class _QuickPlayState extends State<QuickPlay> {
     ''
   };
   var over18List = {
-    'Johnny Sins'
+    'Johnny Sins',
   };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(
-            "Orientation",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 45,
-                fontFamily: 'Freestyle Script'
-            ),
-          ),
-      ),
       body: OrientationBuilder(builder:
           (context, orientation){
             if(orientation != Orientation.portrait)
               {
-                return potrait();
+                return potrait(context);
               }//end if
             else{
-                return landscape();
+                return landscape(context);
              }
         },
       ),
     );
   }
 }
-Widget potrait()
+Widget potrait(BuildContext context)
 {
-  return Center(
-    child: Text(
-      "Potrait",
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 30.0,
-      ),
-    ),
+  return Scaffold(
+    backgroundColor: Colors.lightBlue[100],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+             Text(
+            "You are in Portrait mode",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30.0,
+            ),
+          ),
+            SizedBox(
+              height: 80,
+              width: 220,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  side: const BorderSide(width: 3.0, color: Colors.black),
+                  elevation: 10,
+                  backgroundColor: Colors.white,
+                  minimumSize: const Size(100.0, 20.0),
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+                child: const Center(
+                  child: Text(
+                    "Return to Home",
+                    style: TextStyle(color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 45,
+                        fontFamily: 'Freestyle Script'
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ],
+        ),
+  ),
   );
 }
-Widget landscape(){
-  return Center(
-    child: Text(
-      "landscape",
-      style: TextStyle(
-        color: Colors.red,
-        fontSize: 30.0,
-      ),
+Widget landscape(BuildContext context){
+  return Scaffold(
+    backgroundColor: Colors.lightBlue[100],
+      body: Center(
+      child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+            Text(
+          "Please turn the phone in portrait mode.",
+          style: TextStyle(
+            color: Colors.red,
+            fontSize: 30.0,
+          ),
+          ),
+        SizedBox(
+          height: 80,
+          width: 220,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              side: const BorderSide(width: 3.0, color: Colors.black),
+              elevation: 10,
+              backgroundColor: Colors.white,
+              minimumSize: const Size(100.0, 20.0),
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+            },
+            child: const Center(
+              child: Text(
+                "Return to Home",
+                style: TextStyle(color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 45,
+                    fontFamily: 'Freestyle Script'
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     ),
+  ),
   );
 }
