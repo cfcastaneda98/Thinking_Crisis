@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/View/AboutScreen.dart';
+import 'package:thinking_crisis/View/QuickplayOptionsScreen.dart';
 
 import 'Over18Screen.dart';
 
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ElevatedButton(
                     onPressed:(){
                       Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => QuickPlay()),
+                        MaterialPageRoute(builder: (context) => QuickplayOptionsScreen()),
                       );
                     },
                   child: Center(
