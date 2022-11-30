@@ -12,7 +12,7 @@ class TitleScreen extends StatelessWidget{
     ),);
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[

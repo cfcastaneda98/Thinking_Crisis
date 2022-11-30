@@ -15,7 +15,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,

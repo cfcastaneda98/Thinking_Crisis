@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import '../View/HomeScreen.dart';
 
 class GameScreen extends StatefulWidget {
@@ -14,7 +14,9 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   var quickPlayList = {
     'Horse',
-    ''
+    'Miner',
+    'Chico Chihuahua',
+
   };
   var over18List = {
     'Johnny Sins',
@@ -39,13 +41,33 @@ class _GameScreenState extends State<GameScreen> {
 Widget potrait(BuildContext context)
 {
   return Scaffold(
-    backgroundColor: Colors.lightBlue[100],
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Align(
+            alignment: Alignment.topRight,
+            child: Icon(
+              Icons.pause_circle_outline_sharp,
+              size: 75,
+            ),
+          ),
           Text(
             "You are in Portrait mode",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30.0,
+            ),
+          ),
+          Text(
+            "Number of players: ",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 30.0,
+            ),
+          ),
+          Text(
+            "Number of rounds: ",
             style: TextStyle(
               color: Colors.black,
               fontSize: 30.0,
@@ -92,6 +114,7 @@ Widget landscape(BuildContext context){
         children: <Widget>[
           Text(
             "Please turn the phone in portrait mode.",
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.red,
               fontSize: 30.0,

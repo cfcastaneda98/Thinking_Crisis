@@ -11,8 +11,10 @@ class _AboutScreenState extends State<AboutScreen>{
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
-      body: Center(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const Text(

@@ -11,10 +11,12 @@ class _Over18State extends State<Over18Screen>{
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            const SizedBox(height: 100),
             const Text(
               'Naughty, Naughty....',
               style: TextStyle(color: Colors.red,
