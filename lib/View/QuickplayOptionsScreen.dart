@@ -169,7 +169,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
                         size: 30,
                       ),
                       style: ElevatedButton.styleFrom(
-                        side: const BorderSide(width: 3.0, color: Colors.black),
+                        side: const BorderSide(width: 3.0, color: Colors.red),
                         elevation: 10,
                         backgroundColor: Colors.white,
                         minimumSize: const Size(100.0, 20.0),
@@ -199,7 +199,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
                         size: 30,
                       ),
                       style: ElevatedButton.styleFrom(
-                        side: const BorderSide(width: 3.0, color: Colors.black),
+                        side: const BorderSide(width: 3.0, color: Colors.green),
                         elevation: 10,
                         backgroundColor: Colors.white,
                         minimumSize: const Size(100.0, 20.0),

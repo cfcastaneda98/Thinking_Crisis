@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import '../View/HomeScreen.dart';
+import 'dart:math';
 final QuickPlay quickPlay = QuickPlay();
 class GameScreen extends StatefulWidget {
 
@@ -33,22 +34,44 @@ class _GameScreenState extends State<GameScreen> {
 Widget potrait(BuildContext context)
 {
   return Scaffold(
+    appBar: AppBar(
+      backgroundColor: Colors.white,
+      shadowColor: Colors.white,
+      elevation: 0,
+      leading: IconButton(
+        icon: Icon(Icons.exit_to_app_sharp),
+        iconSize: 50,
+        color: Colors.black,
+        onPressed: () {
+          Navigator.push(context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        },
+      ),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.pause_circle_outline_sharp),
+          iconSize: 50,
+          color: Colors.black,
+          onPressed: () {
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
+          },
+        ),
+      ],
+    ),
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Align(
-            alignment: Alignment.topRight,
-            child: Icon(
-              Icons.pause_circle_outline_sharp,
-              size: 75,
-            ),
-          ),
           Text(
             "You are in Portrait mode",
             style: TextStyle(
+                fontWeight: FontWeight.bold,
               color: Colors.black,
-              fontSize: 30.0,
+              fontSize: 70.0,
+                fontFamily: 'Freestyle Script'
             ),
           ),
           Text(
@@ -65,31 +88,39 @@ Widget potrait(BuildContext context)
               fontSize: 30.0,
             ),
           ),
-          SizedBox(
-            height: 80,
-            width: 220,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                side: const BorderSide(width: 3.0, color: Colors.black),
-                elevation: 10,
-                backgroundColor: Colors.white,
-                minimumSize: const Size(100.0, 20.0),
+          Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(100)
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+              Container(
+              height: 80,
+              width: 80,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100)
               ),
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-              child: const Center(
-                child: Text(
-                  "Return to Home",
-                  style: TextStyle(color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 45,
-                      fontFamily: 'Freestyle Script'
-                  ),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                          '60',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                            fontSize: 60.0,
+                            fontFamily: 'Freestyle Script'
+                        ),
+                      ),
+                      ],
                 ),
               ),
+              ],
             ),
           ),
         ],
@@ -100,6 +131,21 @@ Widget potrait(BuildContext context)
 Widget landscape(BuildContext context){
   return Scaffold(
     backgroundColor: Colors.lightBlue[100],
+    appBar: AppBar(
+      backgroundColor: Colors.lightBlue[100],
+      shadowColor: Colors.white,
+      elevation: 0,
+      leading: IconButton(
+        icon: Icon(Icons.exit_to_app_sharp),
+        iconSize: 50,
+        color: Colors.black,
+        onPressed: () {
+          Navigator.push(context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        },
+      ),
+    ),
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -110,33 +156,6 @@ Widget landscape(BuildContext context){
             style: TextStyle(
               color: Colors.red,
               fontSize: 30.0,
-            ),
-          ),
-          SizedBox(
-            height: 80,
-            width: 220,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                side: const BorderSide(width: 3.0, color: Colors.black),
-                elevation: 10,
-                backgroundColor: Colors.white,
-                minimumSize: const Size(100.0, 20.0),
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
-              },
-              child: const Center(
-                child: Text(
-                  "Return to Home",
-                  style: TextStyle(color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 45,
-                      fontFamily: 'Freestyle Script'
-                  ),
-                ),
-              ),
             ),
           ),
         ],
