@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import '../View/HomeScreen.dart';
-
+final QuickPlay quickPlay = QuickPlay();
 class GameScreen extends StatefulWidget {
 
 
@@ -12,15 +12,7 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  var quickPlayList = {
-    'Horse',
-    'Miner',
-    'Chico Chihuahua',
 
-  };
-  var over18List = {
-    'Johnny Sins',
-  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,14 +52,14 @@ Widget potrait(BuildContext context)
             ),
           ),
           Text(
-            "Number of players: ",
+            "Number of players: ${quickPlay.players}",
             style: TextStyle(
               color: Colors.black,
               fontSize: 30.0,
             ),
           ),
           Text(
-            "Number of rounds: ",
+            "Number of rounds: ${quickPlay.rounds}",
             style: TextStyle(
               color: Colors.black,
               fontSize: 30.0,

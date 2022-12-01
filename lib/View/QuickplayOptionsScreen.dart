@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'GameScreen.dart';
 import 'HomeScreen.dart';
+import 'package:thinking_crisis/Controller/QuickPlay.dart';
 enum playerOptions{two,three,four}
 enum roundOptions{two,three}
 class QuickplayOptionsScreen extends StatefulWidget {
