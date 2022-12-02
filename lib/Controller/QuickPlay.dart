@@ -1,12 +1,21 @@
+import 'package:thinking_crisis/Controller/GameScore.dart';
+import 'package:thinking_crisis/Model/PromptResult.dart';
+import '../Model/Prompt.dart';
+import 'GameResult.dart';
+
 class QuickPlay{
-  var  _rounds = 0;
-  var _players = 0;
-  num get rounds => _rounds;
-  set rounds(var round){
-    _rounds = round;
+  int _roundTime = 0;
+  final List<Prompt> _prompts;
+  List<Prompt> get prompts => _prompts;
+  int get length => prompts.length;
+  QuickPlay(this._prompts);
+  GameResult evaluate(){
+    var score = GameScore(0);
+    List<PromptResult> promptResult = [];
+    return GameResult(promptResult, score);
   }
-  num get players => _players;
-  set players(var player){
-    _players = player;
+  int getRoundTime() => _roundTime;
+  set RoundTime(int roundTime){
+    _roundTime = roundTime;
   }
 }

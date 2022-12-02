@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
+import 'package:thinking_crisis/Model/PromptPool.dart';
 import '../View/HomeScreen.dart';
 import 'dart:math';
-final QuickPlay quickPlay = QuickPlay();
+import 'package:thinking_crisis/Model/PromptPool.dart';
 class GameScreen extends StatefulWidget {
 
 
@@ -75,14 +76,14 @@ Widget potrait(BuildContext context)
             ),
           ),
           Text(
-            "Number of players: ${quickPlay.players}",
+            "Quickplay Length: ${PromptPool} ",
             style: TextStyle(
               color: Colors.black,
               fontSize: 30.0,
             ),
           ),
           Text(
-            "Number of rounds: ${quickPlay.rounds}",
+            "Number of rounds: ",
             style: TextStyle(
               color: Colors.black,
               fontSize: 30.0,

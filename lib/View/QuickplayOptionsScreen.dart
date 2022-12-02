@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'GameScreen.dart';
 import 'HomeScreen.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
-enum playerOptions{two,three,four}
 enum roundOptions{two,three}
 class QuickplayOptionsScreen extends StatefulWidget {
   const QuickplayOptionsScreen({Key? key}) : super(key: key);
@@ -10,7 +10,6 @@ class QuickplayOptionsScreen extends StatefulWidget {
   State<QuickplayOptionsScreen> createState() => _QuickplayOptionsScreenState();
 }
 class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
-  playerOptions _players = playerOptions.two;
   roundOptions _rounds = roundOptions.two;
   @override
   Widget build(BuildContext context){
@@ -30,77 +29,6 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
               ),
             ),
             const SizedBox(height: 50),
-            const Text(
-              'How many players?',
-              style: TextStyle(color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 50,
-                  fontFamily: 'Freestyle Script'
-              ),
-            ),
-            const SizedBox(height: 10),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ListTile(
-                  title: const Text(
-                      '2',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30,)
-                  ),
-                  leading: Radio<playerOptions>(
-                    activeColor: Colors.black,
-                    value: playerOptions.two,
-                    groupValue: _players,
-                    onChanged: (playerOptions? value){
-                      setState(() {
-                        _players = value!;
-                      });
-                    },
-                  )
-                ),
-                ListTile(
-                    title: const Text(
-                        '3',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,)
-                    ),
-                    leading: Radio<playerOptions>(
-                      activeColor: Colors.black,
-                      value: playerOptions.three,
-                      groupValue: _players,
-                      onChanged: (playerOptions? value){
-                        setState(() {
-                          _players = value!;
-                        });
-                      },
-                    )
-                ),
-                ListTile(
-                    title: const Text(
-                        '4',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,)
-                    ),
-                    leading: Radio<playerOptions>(
-                      activeColor: Colors.black,
-                      value: playerOptions.four,
-                      groupValue: _players,
-                      onChanged: (playerOptions? value){
-                        setState(() {
-                          _players = value!;
-                        });
-                      },
-                    )
-                ),
-              ],
-            ),
             const SizedBox(height: 10),
             const Text(
               'How many rounds?',
@@ -152,7 +80,24 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
                       },
                     )
                 ),
+                CupertinoSegmentedControl(
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                    borderColor: Colors.white,
+                    selectedColor: Colors.red,
+                    pressedColor: Colors.green,
+                    unselectedColor: Theme.of(context).primaryColor,
+                    children: {
+                      30: buildRoundTimeSelectItem("30s"),
+                      60: buildRoundTimeSelectItem("60s"),
+                      90: buildRoundTimeSelectItem("90s"),
+                      120: buildRoundTimeSelectItem("120s"),
+                    },
+                    onValueChanged: (value){
+                      setState(() {
 
+                      });
+                    },
+                ),
               ],
             ),
             const SizedBox(height: 10),
@@ -223,6 +168,16 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildRoundTimeSelectItem(String text) {
+    return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 12.0),
+      child: Text(
+        text,
+        style: TextStyle(color: Colors.white),
       ),
     );
   }
