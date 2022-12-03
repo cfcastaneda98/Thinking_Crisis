@@ -3,14 +3,33 @@ import 'package:flutter/material.dart';
 import 'GameScreen.dart';
 import 'HomeScreen.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
-enum roundOptions{two,three}
+
 class QuickplayOptionsScreen extends StatefulWidget {
   const QuickplayOptionsScreen({Key? key}) : super(key: key);
   @override
   State<QuickplayOptionsScreen> createState() => _QuickplayOptionsScreenState();
 }
 class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
-  roundOptions _rounds = roundOptions.two;
+  int selectedSecondsValue = 30;
+  Map<int,Widget> childrenSeconds = <int,Widget>{
+    30: const Text ("30s"),
+    60: const Text ("60s"),
+    90: const Text ("90s"),
+    120: const Text ("120s"),
+  };
+  int selectedRoundValue = 1;
+  Map<int,Widget> childrenRounds = <int,Widget>{
+    1: const Text ("1"),
+    2: const Text ("2"),
+    3: const Text ("3"),
+  };
+  @override
+  void initState(){
+    setState(() {
+        QuickPlay.roundAmount = selectedRoundValue;
+        QuickPlay.roundTime = selectedSecondsValue;
+    });
+  }
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -29,7 +48,6 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
               ),
             ),
             const SizedBox(height: 50),
-            const SizedBox(height: 10),
             const Text(
               'How many rounds?',
               style: TextStyle(color: Colors.black,
@@ -40,63 +58,68 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
             ),
             const SizedBox(height: 10),
             Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ListTile(
-                    title: const Text(
-                        '2',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,)
-                    ),
-                    leading: Radio<roundOptions>(
-                      activeColor: Colors.black,
-                      value: roundOptions.two,
-                      groupValue: _rounds,
-                      onChanged: (roundOptions? value){
-                        setState(() {
-                          _rounds = value!;
-                        });
-                      },
-                    )
-                ),
-                ListTile(
-                    title: const Text(
-                        '3',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,)
-                    ),
-                    leading: Radio<roundOptions>(
-                      activeColor: Colors.black,
-                      value: roundOptions.three,
-                      groupValue: _rounds,
-                      onChanged: (roundOptions? value){
-                        setState(() {
-                          _rounds = value!;
-                        });
-                      },
-                    )
-                ),
-                CupertinoSegmentedControl(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                    borderColor: Colors.white,
-                    selectedColor: Colors.red,
-                    pressedColor: Colors.green,
-                    unselectedColor: Theme.of(context).primaryColor,
-                    children: {
-                      30: buildRoundTimeSelectItem("30s"),
-                      60: buildRoundTimeSelectItem("60s"),
-                      90: buildRoundTimeSelectItem("90s"),
-                      120: buildRoundTimeSelectItem("120s"),
-                    },
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  child: CupertinoSegmentedControl<int>(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    borderColor: Colors.black,
+                    selectedColor: Colors.blueAccent,
+                    pressedColor: Colors.blue,
+                    unselectedColor: Colors.white,
+                    groupValue: selectedRoundValue,
+                    children: childrenRounds,
                     onValueChanged: (value){
+                      selectedRoundValue = value;
                       setState(() {
-
+                        QuickPlay.roundAmount = selectedRoundValue;
                       });
                     },
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              '${QuickPlay.roundAmount}',
+            ),
+            const SizedBox(height: 10),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'How many seconds?',
+                  style: TextStyle(color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50,
+                      fontFamily: 'Freestyle Script'
+                  ),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 50,
+                      child: CupertinoSegmentedControl<int>(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        borderColor: Colors.black,
+                        selectedColor: Colors.blueAccent,
+                        pressedColor: Colors.blue,
+                        unselectedColor: Colors.white,
+                        groupValue: selectedSecondsValue,
+                        children: childrenSeconds,
+                        onValueChanged: (value){
+                          selectedSecondsValue = value;
+                          setState(() {
+                            QuickPlay.roundTime = selectedSecondsValue;
+                          });
+                        },
+                      ),
+                    ),
+                    Text(
+                      '${QuickPlay.roundTime}',
+                    ),
+                  ],
                 ),
               ],
             ),

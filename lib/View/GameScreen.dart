@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/Model/PromptPool.dart';
+import 'package:thinking_crisis/View/QuickplayResultScreen.dart';
 import '../View/HomeScreen.dart';
 import 'dart:math';
 import 'package:thinking_crisis/Model/PromptPool.dart';
@@ -14,7 +15,6 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +56,7 @@ Widget potrait(BuildContext context)
           color: Colors.black,
           onPressed: () {
             Navigator.push(context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
+              MaterialPageRoute(builder: (context) => QuickplayResultScreen()),
             );
           },
         ),
@@ -76,14 +76,14 @@ Widget potrait(BuildContext context)
             ),
           ),
           Text(
-            "Quickplay Length: ${PromptPool} ",
+            "Number of rounds: ${QuickPlay.roundAmount} ",
             style: TextStyle(
               color: Colors.black,
               fontSize: 30.0,
             ),
           ),
           Text(
-            "Number of rounds: ",
+            "Number of seconds: ",
             style: TextStyle(
               color: Colors.black,
               fontSize: 30.0,
@@ -110,7 +110,7 @@ Widget potrait(BuildContext context)
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                          '60',
+                          '${QuickPlay.roundTime}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.red,
@@ -155,8 +155,10 @@ Widget landscape(BuildContext context){
             "Please turn the phone in portrait mode.",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.red,
-              fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 70.0,
+                fontFamily: 'Freestyle Script'
             ),
           ),
         ],

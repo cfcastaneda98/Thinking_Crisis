@@ -4,7 +4,8 @@ import '../Model/Prompt.dart';
 import 'GameResult.dart';
 
 class QuickPlay{
-  int _roundTime = 0;
+  static int roundTime = 30;
+  static int roundAmount = 1;
   final List<Prompt> _prompts;
   List<Prompt> get prompts => _prompts;
   int get length => prompts.length;
@@ -14,8 +15,12 @@ class QuickPlay{
     List<PromptResult> promptResult = [];
     return GameResult(promptResult, score);
   }
-  int getRoundTime() => _roundTime;
+  int getRoundAmount() => roundAmount;
+  set RoundAmount(int roundAmount){
+    roundAmount = roundAmount;
+  }
+  int getRoundTime() => roundTime;
   set RoundTime(int roundTime){
-    _roundTime = roundTime;
+    roundTime = roundTime;
   }
 }
