@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thinking_crisis/Controller/GameScore.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/Model/PromptPool.dart';
 import '../View/HomeScreen.dart';
@@ -16,7 +17,7 @@ class QuickplayResultScreen extends StatefulWidget {
 }
 
 class _QuickplayResultScreenState extends State<QuickplayResultScreen> {
-  int? _numQuestions;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,14 +58,17 @@ Widget potrait(BuildContext context)
   );
 }
 Widget landscape(BuildContext context){
+  int currentScore = GameScore.currentPoints;
+  int roundNumber = QuickPlay.roundAmount;
+  double finalScore = (currentScore/roundNumber)*100;
   return Scaffold(
     backgroundColor: Colors.lightBlue[100],
-    body: SingleChildScrollView(
+    body: Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
+          const Text(
             "Game Result",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -74,24 +78,62 @@ Widget landscape(BuildContext context){
                 fontFamily: 'Freestyle Script'
             ),
           ),
+          const SizedBox(height: 30),
           Text(
-            'Number correct: ',
+            'Number correct:',
             style: TextStyle(
-              fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 50.0,
+                fontFamily: 'Freestyle Script'
             ),
           ),
           Text(
-            'Number Incorrect: ',
+            '${GameScore.currentPoints}',
             style: TextStyle(
-              fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.green,
+                fontSize: 60.0,
+                fontFamily: 'Freestyle Script'
             ),
           ),
           Text(
-            'Total score: ',
+            'Number Incorrect:',
             style: TextStyle(
-              fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 50.0,
+                fontFamily: 'Freestyle Script'
             ),
           ),
+          Text(
+            '${GameScore.incorrectPoints}',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+                fontSize: 60.0,
+                fontFamily: 'Freestyle Script'
+            ),
+          ),
+          Text(
+            'Total score:',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 50.0,
+                fontFamily: 'Freestyle Script'
+            ),
+          ),
+          Text(
+            '${finalScore.round()}%',
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+                fontSize: 80.0,
+                fontFamily: 'Freestyle Script'
+            ),
+          ),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[

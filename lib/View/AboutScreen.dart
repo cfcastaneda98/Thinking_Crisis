@@ -17,6 +17,7 @@ class _AboutScreenState extends State<AboutScreen>{
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            const SizedBox(height: 30),
             const Text(
                 'About',
               style: TextStyle(color: Colors.black,
@@ -25,7 +26,7 @@ class _AboutScreenState extends State<AboutScreen>{
                   fontFamily: 'Freestyle Script'
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
             const Text(
               'Authors:',
               style: TextStyle(color: Colors.black,

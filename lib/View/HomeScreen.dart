@@ -3,6 +3,7 @@ import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/View/AboutScreen.dart';
 import 'package:thinking_crisis/View/QuickplayOptionsScreen.dart';
 
+import '../Model/PromptPool.dart';
 import 'Over18Screen.dart';
 
 class HomeScreen extends StatefulWidget {

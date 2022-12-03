@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:thinking_crisis/Controller/GameScore.dart';
+import 'package:thinking_crisis/Model/PromptPool.dart';
 import 'GameScreen.dart';
 import 'HomeScreen.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 
 class QuickplayOptionsScreen extends StatefulWidget {
+
   const QuickplayOptionsScreen({Key? key}) : super(key: key);
   @override
   State<QuickplayOptionsScreen> createState() => _QuickplayOptionsScreenState();
@@ -28,6 +31,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
     setState(() {
         QuickPlay.roundAmount = selectedRoundValue;
         QuickPlay.roundTime = selectedSecondsValue;
+        GameScore.currentPoints = 0;
     });
   }
   @override
@@ -39,6 +43,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 40),
             const Text(
               'Quickplay',
               style: TextStyle(color: Colors.black,
@@ -80,9 +85,6 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
                 ),
               ],
             ),
-            Text(
-              '${QuickPlay.roundAmount}',
-            ),
             const SizedBox(height: 10),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -116,14 +118,11 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
                         },
                       ),
                     ),
-                    Text(
-                      '${QuickPlay.roundTime}',
-                    ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
