@@ -53,14 +53,10 @@ Widget potrait(BuildContext context)
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            width: 60.0,
-            height: 60.0,
-            child: const DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.red
-                ),
-            ),
+          Image.asset(
+              'assets/images/tc_rotate.gif',
+            height: 120,
+            scale: 2.0
           ),
           Text(
             "Please rotate to Portrait Mode",
