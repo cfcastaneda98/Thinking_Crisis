@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'HomeScreen.dart';
 
 class AboutScreen extends StatefulWidget {
@@ -7,6 +8,14 @@ class AboutScreen extends StatefulWidget {
   State<AboutScreen> createState() => _AboutScreenState();
 }
 class _AboutScreenState extends State<AboutScreen>{
+  @override
+  void initState(){
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]
+    );
+  }
   @override
   Widget build(BuildContext context){
     return Scaffold(

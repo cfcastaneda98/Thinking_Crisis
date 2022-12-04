@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/GameScore.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/Model/PromptPool.dart';
@@ -17,7 +18,16 @@ class QuickplayResultScreen extends StatefulWidget {
 }
 
 class _QuickplayResultScreenState extends State<QuickplayResultScreen> {
-
+  @override
+  void initState(){
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +54,7 @@ Widget potrait(BuildContext context)
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
-            "Please turn to Landscape mode",
+            "Please rotate to Portrait Mode",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,

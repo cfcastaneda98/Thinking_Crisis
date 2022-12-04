@@ -6,7 +6,12 @@ class PromptPool{
     'Miner',
     'Chico Chihuahua',
     'Pikachu',
-    'Yoda'
+    'Yoda',
+    'Gollum',
+    'Goku',
+    'Don Ramon',
+    'Shrek',
+    'John Cena'
   ];
   var over18List = [
     'Johnny Sins',
@@ -14,7 +19,11 @@ class PromptPool{
     'Harambe',
     'Chucky',
     'Yeezy',
-    'Quagmire'
+    'Quagmire',
+    'The Deep',
+    'Daenerys',
+    'PEPE',
+    'Cartman'
   ];
   int get quickPlayLength => quickPlayList.length;
   int get over18Length => over18List.length;

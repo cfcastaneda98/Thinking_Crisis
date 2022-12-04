@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'HomeScreen.dart';
 
 class TitleScreen extends StatelessWidget{
+  @override
+  void initState(){
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]
+    );
+  }
   @override
   Widget build(BuildContext context){
     final ButtonStyle style = ElevatedButton.styleFrom(

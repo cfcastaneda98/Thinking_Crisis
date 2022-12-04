@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'HomeScreen.dart';
 
 class Over18Screen extends StatefulWidget {
@@ -7,6 +8,14 @@ class Over18Screen extends StatefulWidget {
   State<Over18Screen> createState() => _Over18State();
 }
 class _Over18State extends State<Over18Screen>{
+  @override
+  void initState(){
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]
+    );
+  }
   @override
   Widget build(BuildContext context){
     return Scaffold(

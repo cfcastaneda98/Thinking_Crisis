@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/GameScore.dart';
 import 'package:thinking_crisis/Model/PromptPool.dart';
 import 'GameScreen.dart';
@@ -28,6 +29,12 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
   };
   @override
   void initState(){
+    super.initState();
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]
+      );
     setState(() {
         QuickPlay.roundAmount = selectedRoundValue;
         QuickPlay.roundTime = selectedSecondsValue;
