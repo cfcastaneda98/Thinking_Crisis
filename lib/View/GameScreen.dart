@@ -60,11 +60,6 @@ class _GameScreenState extends State<GameScreen> {
     startTimer();
     setNewPrompts();
   }
-  void onNext(){
-    setState(() {
-
-    });
-  }
   void setNewPrompts(){
     newList = promptP.selectRandomPrompts(QuickPlay.roundAmount+1);
   }
