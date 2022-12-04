@@ -42,9 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: InkWell(
                   child: ElevatedButton(
                     onPressed:(){
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => QuickplayOptionsScreen()),
-                      );
+                      Navigator.of(context).push(_createRouteQuickPlay());
                     },
                   child: Center(
                     child: Column(
@@ -85,9 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   splashColor: Colors.black,
                   child: ElevatedButton(
                     onPressed:(){
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Over18Screen()),
-                      );
+                      Navigator.of(context).push(_createRouteOver18());
                     },
                     child: Center(
                       child: Column(
@@ -109,9 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   splashColor: Colors.black,
                   child: ElevatedButton(
                     onPressed:(){
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AboutScreen()),
-                      );
+                      Navigator.of(context).push(_createRouteAbout());
                     },
                   child: Center(
                     child: Column(
@@ -131,4 +125,49 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+}
+Route _createRouteQuickPlay(){
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const QuickplayOptionsScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child){
+        const begin = Offset(-5.0, -5.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+        var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
+  );
+}
+Route _createRouteOver18(){
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const Over18Screen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child){
+        const begin = Offset(-5.0, 5.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+        var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
+  );
+}
+Route _createRouteAbout(){
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const AboutScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child){
+        const begin = Offset(5.0, 5.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+        var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
+  );
 }

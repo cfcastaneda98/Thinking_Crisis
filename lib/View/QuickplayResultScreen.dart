@@ -53,6 +53,15 @@ Widget potrait(BuildContext context)
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          SizedBox(
+            width: 60.0,
+            height: 60.0,
+            child: const DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Colors.red
+                ),
+            ),
+          ),
           Text(
             "Please rotate to Portrait Mode",
             style: TextStyle(
@@ -163,9 +172,7 @@ Widget landscape(BuildContext context){
                     minimumSize: const Size(100.0, 20.0),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
+                    Navigator.of(context).push(_createRoute());
                   },
                   label: const Text(
                     "Exit",
@@ -212,5 +219,20 @@ Widget landscape(BuildContext context){
         ],
       ),
     ),
+  );
+}
+Route _createRoute(){
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const HomeScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child){
+        const begin = Offset(0.0, -5.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+        var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
   );
 }

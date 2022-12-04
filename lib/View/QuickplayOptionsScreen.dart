@@ -150,9 +150,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
                         minimumSize: const Size(100.0, 20.0),
                       ),
                       onPressed: () {
-                        Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
+                        Navigator.of(context).push(_createRoute());
                       },
                       label: const Text(
                         "Exit",
@@ -201,7 +199,6 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
       ),
     );
   }
-
   Widget buildRoundTimeSelectItem(String text) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 12.0),
@@ -211,4 +208,19 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
       ),
     );
   }
+}
+Route _createRoute(){
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const HomeScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child){
+        const begin = Offset(0.0, -5.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+        var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
+  );
 }

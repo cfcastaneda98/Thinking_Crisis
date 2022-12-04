@@ -26,6 +26,7 @@ class TitleScreen extends StatelessWidget{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            const SizedBox(height: 30),
             Image.asset(
                 'assets/images/thinking_crisis_title.png',
                 height: 500,
@@ -75,7 +76,7 @@ Route _createRoute(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const HomeScreen(),
     transitionsBuilder: (context, animation, secondaryAnimation, child){
-        const begin = Offset(0.0, 0.1);
+        const begin = Offset(0.0, 5.0);
         const end = Offset.zero;
         const curve = Curves.ease;
         var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
