@@ -27,4 +27,9 @@ class PromptPool{
   ];
   int get quickPlayLength => quickPlayList.length;
   int get over18Length => over18List.length;
+  selectRandomPrompts(int num){
+    var gameList = quickPlayList;
+    gameList.shuffle();
+    return gameList.sublist(0,num);
+  }
 }

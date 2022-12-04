@@ -15,6 +15,7 @@ class QuickplayOptionsScreen extends StatefulWidget {
 }
 class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
   int selectedSecondsValue = 30;
+  final PromptPool promptP = new PromptPool();
   Map<int,Widget> childrenSeconds = <int,Widget>{
     30: const Text ("30s"),
     60: const Text ("60s"),

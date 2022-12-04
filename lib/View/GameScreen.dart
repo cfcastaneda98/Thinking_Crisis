@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/GameScore.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/Model/PromptPool.dart';
+import 'package:thinking_crisis/View/QuickplayOptionsScreen.dart';
 import 'package:thinking_crisis/View/QuickplayResultScreen.dart';
 import '../View/HomeScreen.dart';
 import 'dart:math';
@@ -17,8 +18,12 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  late int index;
+  int promptIndex = 0;
+  var newList;
   Timer? countdownTimer;
+  final PromptPool promptP = new PromptPool();
+  var num = Random();
+  int gameIndex = QuickPlay.roundAmount;
   Duration roundDuration = Duration(seconds: QuickPlay.roundTime);
   void startTimer(){
     countdownTimer = Timer.periodic(Duration(seconds: 1),(_) => setCountdown());
@@ -52,20 +57,19 @@ class _GameScreenState extends State<GameScreen> {
     );
     GameScore.currentPoints = 0;
     GameScore.incorrectPoints = 0;
-
     startTimer();
+    setNewPrompts();
   }
   void onNext(){
     setState(() {
 
     });
   }
+  void setNewPrompts(){
+    newList = promptP.selectRandomPrompts(QuickPlay.roundAmount+1);
+  }
   @override
   Widget build(BuildContext context) {
-    final PromptPool promptP = new PromptPool();
-    var num = new Random();
-    var randPrompt = num.nextInt(promptP.quickPlayLength);
-    int gameIndex = QuickPlay.roundAmount;
     String strDigits(int n) => n.toString().padLeft(2, '0');
     final seconds = strDigits(roundDuration.inSeconds.remainder(130));
     return Scaffold(
@@ -99,12 +103,13 @@ class _GameScreenState extends State<GameScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Text(
-              promptP.quickPlayList[randPrompt],
-              style: TextStyle(
+              //promptP.quickPlayList[promptIndex],
+              newList[promptIndex],
+              style: const TextStyle(
                   letterSpacing: 5.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
-                  fontSize: 90.0,
+                  fontSize: 100.0,
                   fontFamily: 'Freestyle Script'
               ),
             ),
@@ -130,7 +135,7 @@ class _GameScreenState extends State<GameScreen> {
                       children: <Widget>[
                         Text(
                           seconds,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.red,
                               fontSize: 60.0,
@@ -159,8 +164,11 @@ class _GameScreenState extends State<GameScreen> {
                       backgroundColor: Colors.white,
                     ),
                     onPressed: () {
+                      promptIndex++;
                       gameIndex--;
                       GameScore.currentPoints++;
+                      resetTimer();
+                      startTimer();
                       if(gameIndex == 0){
                         Navigator.push(context,
                           MaterialPageRoute(builder: (context) => QuickplayResultScreen()),
@@ -190,8 +198,11 @@ class _GameScreenState extends State<GameScreen> {
                       backgroundColor: Colors.white,
                     ),
                     onPressed: () {
+                      promptIndex++;
                       gameIndex--;
                       GameScore.incorrectPoints++;
+                      resetTimer();
+                      startTimer();
                       if(gameIndex == 0){
                         Navigator.push(context,
                           MaterialPageRoute(builder: (context) => QuickplayResultScreen()),
