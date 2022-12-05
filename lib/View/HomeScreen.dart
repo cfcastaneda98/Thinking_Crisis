@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/View/AboutScreen.dart';
+import 'package:thinking_crisis/View/CreateListOptionsScreen.dart';
 import 'package:thinking_crisis/View/QuickplayOptionsScreen.dart';
 
 import '../Model/PromptPool.dart';
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Icon(Icons.punch_clock,size: 70.0,),
+                        Icon(Icons.punch_clock_sharp,size: 70.0,),
                         Text('Quickplay',style: new TextStyle(fontSize: 17.0))
                       ],
                     ),
@@ -63,14 +64,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: InkWell(
                   onTap: (){},
                   splashColor: Colors.black,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-
-                      children: <Widget>[
-                        Icon(Icons.check_box,size: 70.0,),
-                        Text('CreateList',style: new TextStyle(fontSize: 17.0))
-                      ],
+                  child: ElevatedButton(
+                    onPressed:(){
+                      Navigator.of(context).push(_createRouteCreateList());
+                    },
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(Icons.library_add_check_sharp,size: 70.0,),
+                          Text('Create List',style: new TextStyle(fontSize: 17.0))
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -131,6 +136,21 @@ Route _createRouteQuickPlay(){
       pageBuilder: (context, animation, secondaryAnimation) => const QuickplayOptionsScreen(),
       transitionsBuilder: (context, animation, secondaryAnimation, child){
         const begin = Offset(-5.0, -5.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
+        var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      }
+  );
+}
+Route _createRouteCreateList(){
+  return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => const CreateListOptionsScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child){
+        const begin = Offset(5.0, -5.0);
         const end = Offset.zero;
         const curve = Curves.ease;
         var tween = Tween(begin: begin,end: end).chain(CurveTween(curve:curve));
