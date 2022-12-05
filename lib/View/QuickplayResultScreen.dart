@@ -3,13 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/GameScore.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/Model/PromptPool.dart';
+import '../Model/thinking_crisis_icons_icons.dart';
 import '../View/HomeScreen.dart';
 import 'dart:math';
 import 'package:thinking_crisis/Model/PromptPool.dart';
 
 import 'GameScreen.dart';
 class QuickplayResultScreen extends StatefulWidget {
-
 
   const QuickplayResultScreen({Key? key}) : super(key: key);
 
@@ -18,6 +18,8 @@ class QuickplayResultScreen extends StatefulWidget {
 }
 
 class _QuickplayResultScreenState extends State<QuickplayResultScreen> {
+  IconData? resultIcon;
+  double finalScore = 0.0;
   @override
   void initState(){
     SystemChrome.setPreferredOrientations([
@@ -27,6 +29,15 @@ class _QuickplayResultScreenState extends State<QuickplayResultScreen> {
       DeviceOrientation.landscapeRight,
     ]
     );
+  }
+  IconData? selectIcon(finalScore){
+    if(finalScore.round() >= 80.0){
+      resultIcon = ThinkingCrisisIcons.asset_11;
+    } else if (finalScore.round() < 80.0 && finalScore.round() > 40.0){
+      resultIcon = ThinkingCrisisIcons.asset_11;
+    } else {
+      resultIcon = ThinkingCrisisIcons.asset_11;
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -73,9 +84,20 @@ Widget potrait(BuildContext context)
   );
 }
 Widget landscape(BuildContext context){
+  IconData? resultIcon = ThinkingCrisisIcons.asset_11;
+  void selectIcon(finalScore){
+    if(finalScore.round() >= 80.0){
+      resultIcon = ThinkingCrisisIcons.asset_11;
+    } else if (finalScore.round() < 80.0 && finalScore.round() > 40.0){
+      resultIcon = ThinkingCrisisIcons.asset_10;
+    } else {
+      resultIcon = ThinkingCrisisIcons.asset_9;
+    }
+  }
   int currentScore = GameScore.currentPoints;
   int roundNumber = QuickPlay.roundAmount;
   double finalScore = (currentScore/roundNumber)*100;
+  selectIcon(finalScore);
   return Scaffold(
     backgroundColor: Colors.lightBlue[100],
     body: Center(
@@ -95,7 +117,7 @@ Widget landscape(BuildContext context){
           ),
           const SizedBox(height: 30),
           Text(
-            'Number correct:',
+            'Number Correct:',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -139,14 +161,20 @@ Widget landscape(BuildContext context){
                 fontFamily: 'Freestyle Script'
             ),
           ),
-          Text(
-            '${finalScore.round()}%',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-                fontSize: 80.0,
-                fontFamily: 'Freestyle Script'
-            ),
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Icon(resultIcon,size: 80),
+              Text(
+                ' ${finalScore.round()}%',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                    fontSize: 80.0,
+                    fontFamily: 'Freestyle Script'
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 20),
           Row(

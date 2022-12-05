@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../Model/thinking_crisis_icons_icons.dart';
 import 'HomeScreen.dart';
 
 class AboutScreen extends StatefulWidget {
@@ -27,13 +28,19 @@ class _AboutScreenState extends State<AboutScreen>{
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const SizedBox(height: 30),
-            const Text(
-                'About',
-              style: TextStyle(color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 70,
-                  fontFamily: 'Freestyle Script'
-              ),
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Icon(ThinkingCrisisIcons.asset_6,size: 80),
+                const Text(
+                  ' About',
+                  style: TextStyle(color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 70,
+                      fontFamily: 'Freestyle Script'
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 30),
             const Text(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/GameScore.dart';
 import 'package:thinking_crisis/Model/PromptPool.dart';
+import '../Model/thinking_crisis_icons_icons.dart';
 import 'GameScreen.dart';
 import 'HomeScreen.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
@@ -52,13 +53,19 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const SizedBox(height: 40),
-            const Text(
-              'Quickplay',
-              style: TextStyle(color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 70,
-                  fontFamily: 'Freestyle Script'
-              ),
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Icon(ThinkingCrisisIcons.asset_10,size: 80),
+                const Text(
+                  ' Quickplay',
+                  style: TextStyle(color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 70,
+                      fontFamily: 'Freestyle Script'
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 50),
             const Text(
