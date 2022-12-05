@@ -80,5 +80,8 @@ flutter:
      - family: Freestyle Script
        fonts:
          - asset: assets/FREESCPT.TTF
+     - family: ThinkingCrisisIcons
+       fonts:
+         - asset: assets/fonts/ThinkingCrisisIcons.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

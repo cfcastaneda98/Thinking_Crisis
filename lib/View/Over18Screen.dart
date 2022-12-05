@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../Model/thinking_crisis_icons_icons.dart';
 import 'HomeScreen.dart';
 
 class Over18Screen extends StatefulWidget {
@@ -25,7 +26,7 @@ class _Over18State extends State<Over18Screen>{
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            const SizedBox(height: 100),
+            const SizedBox(height: 50),
             const Text(
               'Naughty, Naughty....',
               style: TextStyle(color: Colors.red,
@@ -34,6 +35,8 @@ class _Over18State extends State<Over18Screen>{
                   fontFamily: 'Freestyle Script'
               ),
             ),
+            const SizedBox(height: 50),
+            Icon(ThinkingCrisisIcons.asset_9,color: Colors.white,size: 180,),
             const SizedBox(height: 50),
             const Text(
               'This section is still a work in progress, but be on the lookout for a very "unique" playlist just for the grownups. ',
