@@ -1,3 +1,11 @@
+// Author: Carlos Castaneda, Isaac Campos
+// Class: CS 4381
+// Date modified: 12/4/22
+// Instructor: Yoonsik Cheon
+// Assignment: Thinking Crisis (Semester Project) (14 of 16)
+// Purpose: Practice our skills to create our very own application
+// which in this case is a guessing party game that uses only one phone.
+// Implements the logic for the quick play results screen
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/GameScore.dart';
@@ -7,16 +15,13 @@ import '../Model/thinking_crisis_icons_icons.dart';
 import '../View/HomeScreen.dart';
 import 'dart:math';
 import 'package:thinking_crisis/Model/PromptPool.dart';
-
 import 'GameScreen.dart';
+///Displays the result of a game to the user after completion
 class QuickplayResultScreen extends StatefulWidget {
-
   const QuickplayResultScreen({Key? key}) : super(key: key);
-
   @override
   State<QuickplayResultScreen> createState() => _QuickplayResultScreenState();
 }
-
 class _QuickplayResultScreenState extends State<QuickplayResultScreen> {
   IconData? resultIcon;
   double finalScore = 0.0;
@@ -30,6 +35,7 @@ class _QuickplayResultScreenState extends State<QuickplayResultScreen> {
     ]
     );
   }
+  ///Selects the result icon depnding on the user's game score
   IconData? selectIcon(finalScore){
     if(finalScore.round() >= 80.0){
       resultIcon = ThinkingCrisisIcons.asset_11;
@@ -56,6 +62,7 @@ class _QuickplayResultScreenState extends State<QuickplayResultScreen> {
     );
   }
 }
+///A special display when the phone is in portrait mode
 Widget potrait(BuildContext context)
 {
   return Scaffold(
@@ -83,6 +90,7 @@ Widget potrait(BuildContext context)
     ),
   );
 }
+///A special display when the phone is in landscape mode
 Widget landscape(BuildContext context){
   IconData? resultIcon = ThinkingCrisisIcons.asset_11;
   void selectIcon(finalScore){
@@ -245,6 +253,7 @@ Widget landscape(BuildContext context){
     ),
   );
 }
+///Controller that helps display the custom animation for this page
 Route _createRoute(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const HomeScreen(),

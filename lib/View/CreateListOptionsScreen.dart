@@ -1,7 +1,15 @@
+// Author: Carlos Castaneda, Isaac Campos
+// Class: CS 4381
+// Date modified: 12/4/22
+// Instructor: Yoonsik Cheon
+// Assignment: Thinking Crisis (Semester Project) (9 of 16)
+// Purpose: Practice our skills to create our very own application
+// which in this case is a guessing party game that uses only one phone.
+// Implements the logic for the create list options
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'HomeScreen.dart';
+///Screen that displays the user the words they want to add to the game
 class CreateListOptionsScreen extends StatefulWidget{
   const CreateListOptionsScreen({Key?  key}) : super(key: key);
   @override
@@ -12,11 +20,10 @@ class _CreateListOptionsScreen extends State<CreateListOptionsScreen>{
   List<String> data = [];
 
   Icon floatingIcon = new Icon(Icons.add);
-
+  ///Adds the item in a dynamic list
   addDynamic() {
     if (data.length != 0) {
       floatingIcon = new Icon(Icons.add);
-
       data = [];
       listDynamic = [];
       print('if');
@@ -27,7 +34,7 @@ class _CreateListOptionsScreen extends State<CreateListOptionsScreen>{
     }
     listDynamic.add(new DynamicWidget());
   }
-
+  ///Submits the data to be stored for later use
   submitData() {
     floatingIcon = new Icon(Icons.arrow_back);
     data = [];
@@ -35,10 +42,8 @@ class _CreateListOptionsScreen extends State<CreateListOptionsScreen>{
     setState(() {});
     print(data.length);
   }
-
   @override
   Widget build(BuildContext context) {
-
     Widget result = Flexible(
         flex: 1,
         child: Card(
@@ -61,7 +66,6 @@ class _CreateListOptionsScreen extends State<CreateListOptionsScreen>{
             },
           ),
         ));
-
     Widget dynamicTextField = Flexible(
       flex: 2,
       child: ListView.builder(
@@ -69,7 +73,6 @@ class _CreateListOptionsScreen extends State<CreateListOptionsScreen>{
         itemBuilder: (_, index) => listDynamic[index],
       ),
     );
-
     Widget submitButton =  Container(
       child: ElevatedButton(
         onPressed: submitData,
@@ -121,10 +124,8 @@ class _CreateListOptionsScreen extends State<CreateListOptionsScreen>{
     );
   }
 }
-
 class DynamicWidget extends StatelessWidget {
   TextEditingController controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -136,6 +137,7 @@ class DynamicWidget extends StatelessWidget {
     );
   }
 }
+///Controller that helps display the custom animation for this page
 Route _createRoute(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const HomeScreen(),

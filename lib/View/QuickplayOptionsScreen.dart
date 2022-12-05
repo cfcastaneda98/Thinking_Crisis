@@ -1,3 +1,11 @@
+// Author: Carlos Castaneda, Isaac Campos
+// Class: CS 4381
+// Date modified: 12/4/22
+// Instructor: Yoonsik Cheon
+// Assignment: Thinking Crisis (Semester Project) (13 of 16)
+// Purpose: Practice our skills to create our very own application
+// which in this case is a guessing party game that uses only one phone.
+// Implements the logic for the over QuickPlay settings screen
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,9 +15,8 @@ import '../Model/thinking_crisis_icons_icons.dart';
 import 'GameScreen.dart';
 import 'HomeScreen.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
-
+///Displays settings for the user to manipulate for the quick play mode
 class QuickplayOptionsScreen extends StatefulWidget {
-
   const QuickplayOptionsScreen({Key? key}) : super(key: key);
   @override
   State<QuickplayOptionsScreen> createState() => _QuickplayOptionsScreenState();
@@ -206,6 +213,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
       ),
     );
   }
+  ///Used for displays settings to be used for the cupertino selection icons
   Widget buildRoundTimeSelectItem(String text) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 12.0),
@@ -216,6 +224,7 @@ class _QuickplayOptionsScreenState extends State<QuickplayOptionsScreen>{
     );
   }
 }
+///Controller that helps display the custom animation for this page
 Route _createRoute(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const HomeScreen(),

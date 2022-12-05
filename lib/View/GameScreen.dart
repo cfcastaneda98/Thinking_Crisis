@@ -1,3 +1,11 @@
+// Author: Carlos Castaneda, Isaac Campos
+// Class: CS 4381
+// Date modified: 12/4/22
+// Instructor: Yoonsik Cheon
+// Assignment: Thinking Crisis (Semester Project) (10 of 16)
+// Purpose: Practice our skills to create our very own application
+// which in this case is a guessing party game that uses only one phone.
+// Implements the logic for the game screen
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,14 +17,12 @@ import 'package:thinking_crisis/View/QuickplayResultScreen.dart';
 import '../View/HomeScreen.dart';
 import 'dart:math';
 import 'package:thinking_crisis/Model/PromptPool.dart';
+///Will display the realtime gameplay of a certain mode
 class GameScreen extends StatefulWidget {
-
   const GameScreen({Key? key}) : super(key: key);
-
   @override
   State<GameScreen> createState() => _GameScreenState();
 }
-
 class _GameScreenState extends State<GameScreen> {
   int promptIndex = 0;
   var newList;
@@ -25,16 +31,20 @@ class _GameScreenState extends State<GameScreen> {
   var num = Random();
   int gameIndex = QuickPlay.roundAmount;
   Duration roundDuration = Duration(seconds: QuickPlay.roundTime);
+  ///Will start the round timer
   void startTimer(){
     countdownTimer = Timer.periodic(Duration(seconds: 1),(_) => setCountdown());
   }
+  ///Will stop the round timer
   void stopTimer(){
     setState(() => countdownTimer!.cancel());
   }
+  ///Will reset the round timer
   void resetTimer(){
     stopTimer();
     setState(() => roundDuration = Duration(seconds: QuickPlay.roundTime));
   }
+  ///Will decrease the timer by increments of one until it reaches to zero
   void setCountdown(){
     final reduceSecondsBy = 1;
     setState(() {
@@ -60,6 +70,7 @@ class _GameScreenState extends State<GameScreen> {
     startTimer();
     setNewPrompts();
   }
+  ///Sets the new random prompts that will be used throughout the game session
   void setNewPrompts(){
     newList = promptP.selectRandomPrompts(QuickPlay.roundAmount+1);
   }

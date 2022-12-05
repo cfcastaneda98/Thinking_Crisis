@@ -1,20 +1,25 @@
+// Author: Carlos Castaneda, Isaac Campos
+// Class: CS 4381
+// Date modified: 12/4/22
+// Instructor: Yoonsik Cheon
+// Assignment: Thinking Crisis (Semester Project) (11 of 16)
+// Purpose: Practice our skills to create our very own application
+// which in this case is a guessing party game that uses only one phone.
+// Implements the logic for the home screen
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:thinking_crisis/Controller/QuickPlay.dart';
 import 'package:thinking_crisis/View/AboutScreen.dart';
 import 'package:thinking_crisis/View/CreateListOptionsScreen.dart';
 import 'package:thinking_crisis/View/QuickplayOptionsScreen.dart';
-
 import '../Model/PromptPool.dart';
 import 'Over18Screen.dart';
-
+///Main hub of the application
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState(){
@@ -131,6 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+///Controller that helps display the custom animation to QuickplayOptionsScreen
 Route _createRouteQuickPlay(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const QuickplayOptionsScreen(),
@@ -146,6 +152,7 @@ Route _createRouteQuickPlay(){
       }
   );
 }
+///Controller that helps display the custom animation to CreateListOptionsScreen
 Route _createRouteCreateList(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const CreateListOptionsScreen(),
@@ -161,6 +168,7 @@ Route _createRouteCreateList(){
       }
   );
 }
+///Controller that helps display the custom animation to Over18Screen
 Route _createRouteOver18(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const Over18Screen(),
@@ -176,6 +184,7 @@ Route _createRouteOver18(){
       }
   );
 }
+///Controller that helps display the custom animation to AboutScreen
 Route _createRouteAbout(){
   return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const AboutScreen(),
